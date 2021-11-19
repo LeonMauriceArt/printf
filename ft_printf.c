@@ -6,7 +6,7 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:26:42 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/19 17:08:52 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:57:02 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,28 @@
 	
 // }
 
-// char	*ft_str(va_list argptr)
-// {
-	
-	
-// }
 
 void	ft_putchar(char c)
 {
 	write (1, &c, 1);
 }
 
+int	ft_str(va_list ag)
+{
+	char *str;
+
+	str = va_arg(ag, char*);
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
+}
+
 int	ft_char(va_list ag)
 {
-	int		len;
 	char 	c;
 
-	len = 0;
 	c = va_arg(ag, int);
 	ft_putchar(c);
-	return (len);
+	return (1);
 }
 
 int	str_parsing(const char *str, va_list ag)
@@ -56,9 +58,20 @@ int	str_parsing(const char *str, va_list ag)
 		{
 			str++;
 			if (*str == 'c')
-				len = ft_char(ag);
-			// if (str++ == 's')
-			// 	ft_str(ag);
+				len += ft_char(ag);
+			else if (*str == 's')
+				len += ft_str(ag);
+			else if (*str == 'p')
+
+			else if (*str == 'd')
+			
+			else if (*str == 'i')
+
+			else if (*str == 'u')
+
+			else if (*str == 'x')
+
+			else if (*str == '%')
 		}
 		str++;
 	}
@@ -78,5 +91,8 @@ int	ft_printf(const char *str, ...)
 
 int	main()
 {
-	ft_printf("Mon char marche regarde : %c", 'B');
+	char *str = "Popololod";
+	
+	ft_printf("Mon str : %s\n", str);
+	printf("str : %s", str);
 }
