@@ -6,7 +6,7 @@
 #    By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 14:26:45 by lmaurin-          #+#    #+#              #
-#    Updated: 2021/11/19 15:39:31 by lmaurin-         ###   ########.fr        #
+#    Updated: 2021/11/22 10:46:09 by lmaurin-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,11 @@ BONUSOBJ	=	$(BONUS:.c=.o)
 CC		=	gcc
 
 SRC		=	ft_printf.c \
+			/essential_functions/ft_essentials.c \
+			/essential_functions/ft_putnbr.c \
+			ft_convert_part1.c \
+			ft_convert_part2.c \
+			
 
 all: $(NAME)
 

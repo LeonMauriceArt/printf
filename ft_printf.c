@@ -6,72 +6,53 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:26:42 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/19 19:57:02 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/21 15:58:33 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-// int		num_of_args(char const *str)
-// {
-	
-// }
-
-
-void	ft_putchar(char c)
+static	int	convert_call(const char *str, va_list arg, int len)
 {
-	write (1, &c, 1);
+	str++;
+	if (*str == 'c')
+		len += ft_char(arg);
+	else if (*str == 's')
+		len += ft_str(arg);
+	// else if (*str == 'p')
+	// 	len += ft_ptr(arg);
+	else if (*str == 'd')
+			len += ft_decimal(arg);
+	// else if (*str + 1 == 'i')
+		// 	len += ft_integer(arg);
+	// else if (*str + 1 == 'u')
+		// 	len += ft_unsigned(arg);
+	// else if (*str + 1 == 'x')
+		// 	len += ft_hexa(arg);
+	// else if (*str + 1 == '%')
+		// 	len += ft_percent(arg);
+	return (len);
 }
 
-int	ft_str(va_list ag)
-{
-	char *str;
-
-	str = va_arg(ag, char*);
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
-}
-
-int	ft_char(va_list ag)
-{
-	char 	c;
-
-	c = va_arg(ag, int);
-	ft_putchar(c);
-	return (1);
-}
-
-int	str_parsing(const char *str, va_list ag)
+static int	str_parsing(const char *str, va_list arg)
 {
 	int len;
 
 	len = 0;
 	while (*str)
 	{
-		while(ft_isprint(*str) && *str != '%')
+		while (ft_isprint(*str) && *str != '%')
 		{
 			ft_putchar(*str);
 			len++;
 			str++;
 		}
+		if (*str == 10)
+			ft_putchar(10);
 		if (*str == '%')
 		{
+			len = convert_call(str, arg, len);
 			str++;
-			if (*str == 'c')
-				len += ft_char(ag);
-			else if (*str == 's')
-				len += ft_str(ag);
-			else if (*str == 'p')
-
-			else if (*str == 'd')
-			
-			else if (*str == 'i')
-
-			else if (*str == 'u')
-
-			else if (*str == 'x')
-
-			else if (*str == '%')
 		}
 		str++;
 	}
@@ -81,18 +62,18 @@ int	str_parsing(const char *str, va_list ag)
 int	ft_printf(const char *str, ...)
 {
 	int		len;
-	va_list ag;
+	va_list arg;
 
-	va_start(ag, str);
-	len = str_parsing(str, ag);
+	va_start(arg, str);
+	len = str_parsing(str, arg);
 
 	return (len);
 }
 
 int	main()
 {
-	char *str = "Popololod";
+	int d = -147;
 	
-	ft_printf("Mon str : %s\n", str);
-	printf("str : %s", str);
+	ft_printf("ft_printf str : %d\n", d);
+	printf("printf str : %d\n", d);
 }
