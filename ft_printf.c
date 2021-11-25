@@ -6,7 +6,7 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:26:42 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/25 17:33:49 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:51:33 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,3 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (len);
 }
-
-// int main()
-// {
-// 	ft_printf("LalaP%%yup");
-// 	printf("\n");
-// 	printf("LalaP%%yup");
-// }
