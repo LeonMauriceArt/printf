@@ -6,9 +6,11 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 11:07:34 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/21 17:58:52 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/25 16:38:16 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
@@ -25,7 +27,7 @@ int	ft_isprint(int c)
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -33,3 +35,9 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write (1, s, ft_strlen(s));
+}

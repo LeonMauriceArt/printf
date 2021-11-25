@@ -6,9 +6,11 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:47:31 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/21 17:51:13 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:34:57 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../ft_printf.h"
 
 static	void	print_nbr(long int nb)
 {
@@ -21,15 +23,26 @@ static	void	print_nbr(long int nb)
 		ft_putchar(nb + 48);
 }
 
-void	ft_putnbr_fd(int n)
+int	ft_putnbr(long int n)
 {
 	long int	ln;
+	int			len;
 
+	len = 0;
 	ln = n;
+	if (ln == 0)
+		len = 1;
 	if (ln < 0)
 	{
-		ft_putchar ('-');
+		len++;
+		ft_putchar('-');
 		ln *= -1;
 	}
 	print_nbr(ln);
+	while (ln > 0)
+	{
+		len++;
+		ln = ln / 10;
+	}
+	return (len);
 }
