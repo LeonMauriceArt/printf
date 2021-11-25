@@ -6,7 +6,7 @@
 /*   By: lmaurin- <lmaurin-@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:26:42 by lmaurin-          #+#    #+#             */
-/*   Updated: 2021/11/25 17:51:33 by lmaurin-         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:01:50 by lmaurin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static	int	convert_call(const char *str, va_list arg)
 	else if (*str == 'u')
 		len += ft_unsigned(arg);
 	else if (*str == 'x')
-			len += ft_hexa(arg);
+		len += ft_hexa(arg);
 	else if (*str == 'X')
-			len += ft_upphexa(arg);
+		len += ft_upphexa(arg);
 	else
 		len += ft_percent(str);
 	return (len);
